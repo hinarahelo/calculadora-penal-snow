@@ -2,70 +2,154 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Calculadora TJ Vancouver</title>
+  <title>Calculadora TJ Snow</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculadora Penal Oficial do Tribunal da Cidade de Snow">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="watermark"></div>
+  <div class="watermark"></div>
 
-<header class="header-oficial">
-  <div class="faixas-topo">
-    <div class="faixa esquerda"></div>
-    <img src="logo-vancouver.png" class="brasao-topo" alt="Brasão TJ Vancouver">
-    <div class="faixa direita"></div>
-  </div>
-  <h1>CALCULADORA TRIBUNAL DE JUSTIÇA DE VANCOUVER</h1>
-  <h2>1ª VARA CÍVEL E CRIMINAL</h2>
-</header>
-
-<main class="container">
-
-  <div class="search-box">
-    <input id="searchInput" placeholder="Digite o número ou nome do artigo">
-    <button id="searchButton">🔍 Pesquisar</button>
-  </div>
-
-  <div id="artigosContainer" style="display:none"></div>
-
-  <div class="form-group">
-    <strong>Atenuantes</strong>
-    <div class="bloco">
-      <label><input type="checkbox" class="atenuante" data-percent="0.10"> Réu Primário (−10%)</label>
-      <label><input type="checkbox" class="atenuante" data-percent="0.15"> Confissão Espontânea (−15%)</label>
-      <label><input type="checkbox" class="atenuante" data-percent="0.10"> Bons Antecedentes (−10%)</label>
-      <label><input type="checkbox" class="atenuante" data-percent="0.20"> Colaboração com a Justiça (−20%)</label>
-      <label><input type="checkbox" class="atenuante" data-percent="0.20"> Advogado Constituído (−20%)</label>
+  <header class="header-oficial">
+    <div class="faixas-topo">
+      <div class="faixa esquerda"></div>
+      <img src="logo-snow.png" class="brasao-topo" alt="Brasão do Tribunal da Cidade de Snow">
+      <div class="faixa direita"></div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <strong>Atendimentos Jurídicos</strong>
-    <div class="bloco">
-      <label><input type="checkbox" class="honorario" data-valor="20000"> Delegacia Sul — R$ 20.000</label>
-      <label><input type="checkbox" class="honorario" data-valor="30000"> Delegacia PRF — R$ 30.000</label>
+    <h1>CALCULADORA TRIBUNAL DE JUSTIÇA DE SNOW</h1>
+    <h2>1ª VARA CÍVEL E CRIMINAL</h2>
+  </header>
+
+  <main class="container">
+    <section class="intro-box">
+      <p>
+        Ferramenta oficial para cálculo preliminar de pena, multa, fiança e honorários jurídicos,
+        conforme o Código Penal vigente da Cidade de Snow.
+      </p>
+    </section>
+
+    <section class="search-section">
+      <div class="search-box">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Digite o número ou nome do artigo"
+          autocomplete="off"
+        >
+        <button id="searchButton" type="button">🔍 Pesquisar</button>
+      </div>
+
+      <div class="search-actions">
+        <button id="showAllButton" type="button" class="mini-btn">Mostrar todos os artigos</button>
+        <button id="clearSearchButton" type="button" class="mini-btn mini-btn-light">Limpar busca</button>
+      </div>
+
+      <div id="artigosContainer" class="artigos-grid" style="display:none;"></div>
+    </section>
+
+    <section class="panel-grid">
+      <div class="panel">
+        <h3>Redução de Pena (Atenuantes)</h3>
+
+        <div class="bloco">
+          <label>
+            <input type="checkbox" class="atenuante" data-percent="0.20">
+            Presença de advogado (−20%)
+          </label>
+
+          <label>
+            <input type="checkbox" class="atenuante" data-percent="0.10">
+            Confissão do crime (−10%)
+          </label>
+
+          <label>
+            <input type="checkbox" class="atenuante" data-percent="0.10">
+            Bom comportamento durante a abordagem (−10%)
+          </label>
+
+          <label class="colaboracao-linha">
+            <input type="checkbox" id="colaboracaoCheck">
+            Colaboração com a investigação
+          </label>
+
+          <div class="colaboracao-box">
+            <label for="colaboracaoPercent" class="small-label">Percentual definido pela autoridade:</label>
+            <input
+              id="colaboracaoPercent"
+              type="number"
+              min="0"
+              max="100"
+              step="1"
+              placeholder="Ex: 15"
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Majoração / Circunstâncias</h3>
+
+        <div class="bloco">
+          <label>
+            <input type="checkbox" id="agravanteServidor">
+            Aplicar agravante por crime contra servidor público quando cabível
+          </label>
+        </div>
+
+        <div class="info-box">
+          <p><strong>Regras automáticas:</strong></p>
+          <p>• Agravante de +10%: Arts. 1 e 2</p>
+          <p>• Agravante de +5%: Art. 4</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel-grid">
+      <div class="panel">
+        <h3>Atendimentos Jurídicos</h3>
+
+        <div class="bloco">
+          <label>
+            <input type="checkbox" class="honorario" data-valor="20000">
+            Delegacia Sul — R$ 20.000
+          </label>
+
+          <label>
+            <input type="checkbox" class="honorario" data-valor="30000">
+            Delegacia PRF — R$ 30.000
+          </label>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Artigos Selecionados</h3>
+        <div id="selecionadosResumo" class="selecionados-resumo">
+          Nenhum artigo selecionado.
+        </div>
+      </div>
+    </section>
+
+    <section class="action-buttons">
+      <button class="calculate-btn" type="button" onclick="calcular()">Calcular Pena</button>
+      <button class="calculate-btn secondary" type="button" onclick="limparCalculo()">Limpar Cálculo</button>
+    </section>
+
+    <section id="resultado" class="result"></section>
+  </main>
+
+  <footer class="footer-oficial">
+    <div class="faixas-rodape"></div>
+
+    <div class="texto-footer">
+      Documento Oficial – Tribunal de Justiça de Snow<br>
+      <span class="footer-credit">Calculadora desenvolvida por Hinara Heloar</span>
     </div>
-  </div>
 
-  <button class="calculate-btn" onclick="calcular()">Calcular Pena</button>
-  <button class="calculate-btn secondary" onclick="limparCalculo()">Limpar Cálculo</button>
+    <div class="faixas-rodape"></div>
+  </footer>
 
-  <div id="resultado" class="result"></div>
-
-</main>
-
-<footer class="footer-oficial">
-  <div class="faixas-rodape"></div>
-
-  <div class="texto-footer">
-    Documento Oficial – Tribunal de Justiça de Vancouver<br>
-    <span class="footer-credit">Calculadora desenvolvida por Hinara Heloar</span>
-  </div>
-
-  <div class="faixas-rodape"></div>
-</footer>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
