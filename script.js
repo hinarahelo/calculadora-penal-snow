@@ -859,25 +859,48 @@ function calcular() {
     </div>
 
     <div class="document-body">
-      <section class="document-section">
-        <div class="document-card">
-          <p><strong>Pena base:</strong> ${penaBase} meses</p>
-          <p><strong>Redução total:</strong> ${Math.round(percentualReducao * 100)}%</p>
-          <p><strong>Pena final:</strong> ${penaFinal} meses</p>
+      <section class="result-status ${possuiInafiançavel ? "status-inafiançavel" : "status-fianca"}">
+        <span class="result-status-label">Situação da fiança</span>
+        <strong class="result-status-value">
+          ${possuiInafiançavel ? "INAFIANÇÁVEL" : `FIANÇA FIXADA EM R$ ${formatarMoeda(fiancaTotal)}`}
+        </strong>
+      </section>
 
-          <br><br>
+      <section class="result-cards-grid">
+        <div class="result-card-box">
+          <span class="result-card-label">Pena base</span>
+          <strong class="result-card-value">${penaBase} meses</strong>
+        </div>
 
-          <p><strong>Multa:</strong> R$ ${formatarMoeda(multaTotal)}</p>
-          <p><strong>Fiança:</strong> ${
-            possuiInafiançavel
-              ? "INAFIANÇÁVEL"
-              : `R$ ${formatarMoeda(fiancaTotal)}`
-          }</p>
-          <p><strong>Total com honorários:</strong> ${
+        <div class="result-card-box">
+          <span class="result-card-label">Redução total</span>
+          <strong class="result-card-value">${Math.round(percentualReducao * 100)}%</strong>
+        </div>
+
+        <div class="result-card-box result-card-final">
+          <span class="result-card-label">Pena final</span>
+          <strong class="result-card-value">${penaFinal} meses</strong>
+        </div>
+      </section>
+
+      <section class="result-values-panel">
+        <div class="result-value-row">
+          <span>Multa</span>
+          <strong>R$ ${formatarMoeda(multaTotal)}</strong>
+        </div>
+
+        <div class="result-value-row ${possuiInafiançavel ? "result-value-row-danger" : ""}">
+          <span>Fiança</span>
+          <strong>${possuiInafiançavel ? "INAFIANÇÁVEL" : `R$ ${formatarMoeda(fiancaTotal)}`}</strong>
+        </div>
+
+        <div class="result-value-row result-value-row-total">
+          <span>Total com honorários</span>
+          <strong>${
             possuiInafiançavel
               ? `R$ ${formatarMoeda(honorarios)}`
               : `R$ ${formatarMoeda(totalComHonorarios)}`
-          }</p>
+          }</strong>
         </div>
       </section>
 
