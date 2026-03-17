@@ -673,7 +673,6 @@ const clearSearchButton = document.getElementById("clearSearchButton");
 const artigosContainer = document.getElementById("artigosContainer");
 const resultado = document.getElementById("resultado");
 const selecionadosResumo = document.getElementById("selecionadosResumo");
-const agravanteServidor = document.getElementById("agravanteServidor");
 
 const reducaoBomComportamento = document.getElementById("reducaoBomComportamento");
 const reducaoReuPrimario = document.getElementById("reducaoReuPrimario");
@@ -794,7 +793,6 @@ function obterReducaoPena() {
 
   if (reducaoCumplice && reducaoCumplice.checked) {
     const valor = Number(cumplicePercent.value);
-
     if (!Number.isNaN(valor) && valor > 0) {
       percentual += valor / 100;
     }
@@ -803,20 +801,6 @@ function obterReducaoPena() {
   if (percentual > 0.5) percentual = 0.5;
 
   return percentual;
-}
-
-function calcularAgravantes() {
-  let acrescimo = 0;
-
-  if (!agravanteServidor || !agravanteServidor.checked) return acrescimo;
-
-  artigos.forEach((artigo) => {
-    if (artigosSelecionados.has(artigo.numero) && artigo.agravanteServidor) {
-      acrescimo += artigo.pena * artigo.agravanteServidor;
-    }
-  });
-
-  return Math.round(acrescimo);
 }
 
 function calcular() {
@@ -859,11 +843,8 @@ function calcular() {
     honorarios += Number(item.dataset.valor);
   });
 
-  const acrescimo = calcularAgravantes();
-  const penaComAgravante = penaBase + acrescimo;
   const percentualReducao = obterReducaoPena();
-  const desconto = Math.round(penaComAgravante * percentualReducao);
-  const penaFinal = Math.max(0, penaComAgravante - desconto);
+  const penaFinal = Math.max(0, Math.round(penaBase * (1 - percentualReducao)));
   const totalComHonorarios = (possuiInafiançavel ? 0 : fiancaTotal) + honorarios;
 
   const listaFormatada = listaArtigos
@@ -874,38 +855,29 @@ function calcular() {
     <div class="document-header">
       <span class="doc-power">PODER JUDICIÁRIO</span>
       <h3>Resultado do Cálculo Penal</h3>
-      <p>Tribunal de Justiça de Snow — Documento preliminar de apuração</p>
+      <p>Tribunal de Justiça de Snow</p>
     </div>
 
     <div class="document-body">
-      ${
-        possuiInafiançavel
-          ? `<div class="document-alert danger">Consta crime inafiançável entre os artigos selecionados.</div>`
-          : `<div class="document-alert success">Não há crime inafiançável entre os artigos selecionados.</div>`
-      }
-
       <section class="document-section">
-        <h4>Dosimetria preliminar</h4>
-        <div class="document-grid">
-          <div class="document-card">
-            <p><strong>Pena base:</strong> ${penaBase} meses</p>
-            <p><strong>Agravantes aplicadas:</strong> ${acrescimo} meses</p>
-            <p><strong>Pena antes das reduções:</strong> ${penaComAgravante} meses</p>
-            <p><strong>Redução total:</strong> ${Math.round(percentualReducao * 100)}%</p>
-            <p><strong>Desconto em meses:</strong> ${desconto} meses</p>
-            <p><strong>Pena final:</strong> ${penaFinal} meses</p>
-          </div>
+        <div class="document-card">
+          <p><strong>Pena base:</strong> ${penaBase} meses</p>
+          <p><strong>Redução total:</strong> ${Math.round(percentualReducao * 100)}%</p>
+          <p><strong>Pena final:</strong> ${penaFinal} meses</p>
 
-          <div class="document-card">
-            <p><strong>Multa total:</strong> R$ ${formatarMoeda(multaTotal)}</p>
-            <p><strong>Fiança:</strong> ${possuiInafiançavel ? "INAFIANÇÁVEL" : `R$ ${formatarMoeda(fiancaTotal)}`}</p>
-            <p><strong>Honorários jurídicos:</strong> R$ ${formatarMoeda(honorarios)}</p>
-            <p><strong>Total com honorários:</strong> ${
-              possuiInafiançavel
-                ? `R$ ${formatarMoeda(honorarios)}`
-                : `R$ ${formatarMoeda(totalComHonorarios)}`
-            }</p>
-          </div>
+          <br><br>
+
+          <p><strong>Multa:</strong> R$ ${formatarMoeda(multaTotal)}</p>
+          <p><strong>Fiança:</strong> ${
+            possuiInafiançavel
+              ? "INAFIANÇÁVEL"
+              : `R$ ${formatarMoeda(fiancaTotal)}`
+          }</p>
+          <p><strong>Total com honorários:</strong> ${
+            possuiInafiançavel
+              ? `R$ ${formatarMoeda(honorarios)}`
+              : `R$ ${formatarMoeda(totalComHonorarios)}`
+          }</p>
         </div>
       </section>
 
