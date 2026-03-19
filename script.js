@@ -657,8 +657,8 @@ const selecionadosResumo = document.getElementById("selecionadosResumo");
 
 const reducaoBomComportamento = document.getElementById("reducaoBomComportamento");
 const reducaoReuPrimario = document.getElementById("reducaoReuPrimario");
+const reducaoAdvogadoConstituido = document.getElementById("reducaoAdvogadoConstituido");
 const reducaoCumplice = document.getElementById("reducaoCumplice");
-const cumplicePercent = document.getElementById("cumplicePercent");
 
 function renderEstadoInicialResultado() {
   resultado.innerHTML = `
@@ -764,19 +764,20 @@ function atualizarResumoSelecionados() {
 function obterReducaoPena() {
   let percentual = 0;
 
-  if (reducaoReuPrimario && reducaoReuPrimario.checked) {
-    percentual += 0.20;
-  }
-
   if (reducaoBomComportamento && reducaoBomComportamento.checked) {
     percentual += 0.05;
   }
 
+  if (reducaoReuPrimario && reducaoReuPrimario.checked) {
+    percentual += 0.10;
+  }
+
+  if (reducaoAdvogadoConstituido && reducaoAdvogadoConstituido.checked) {
+    percentual += 0.20;
+  }
+
   if (reducaoCumplice && reducaoCumplice.checked) {
-    const valor = Number(cumplicePercent.value);
-    if (!Number.isNaN(valor) && valor > 0) {
-      percentual += valor / 100;
-    }
+    percentual += 0.15;
   }
 
   if (percentual > 0.5) percentual = 0.5;
@@ -903,7 +904,6 @@ function limparCalculo() {
   });
 
   searchInput.value = "";
-  if (cumplicePercent) cumplicePercent.value = "";
   artigosContainer.innerHTML = "";
   artigosContainer.style.display = "none";
   atualizarResumoSelecionados();
@@ -927,14 +927,6 @@ clearSearchButton.addEventListener("click", () => {
   artigosContainer.innerHTML = "";
   artigosContainer.style.display = "none";
 });
-
-if (reducaoCumplice) {
-  reducaoCumplice.addEventListener("change", () => {
-    if (!reducaoCumplice.checked) {
-      cumplicePercent.value = "";
-    }
-  });
-}
 
 atualizarResumoSelecionados();
 renderEstadoInicialResultado();
