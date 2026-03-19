@@ -13,11 +13,7 @@
   <header class="topbar">
     <div class="topbar-line"></div>
     <div class="topbar-inner">
-      <img
-        src="logo-snow.png"
-        alt="Logo Oficial do Tribunal de Justiça de Snow"
-        class="topbar-logo"
-      >
+      <img src="logo-snow.png" class="topbar-logo">
 
       <div class="topbar-text">
         <span class="eyebrow">PODER JUDICIÁRIO</span>
@@ -40,12 +36,7 @@
           </div>
 
           <div class="search-row">
-            <input
-              id="searchInput"
-              type="text"
-              placeholder="Digite o número, nome ou termo do artigo"
-              autocomplete="off"
-            >
+            <input id="searchInput" type="text" placeholder="Digite o número, nome ou termo do artigo">
             <button id="searchButton" type="button" class="btn-primary">Pesquisar</button>
           </div>
 
@@ -59,40 +50,38 @@
       </div>
 
       <aside class="right-column">
+
+        <!-- 🔻 REDUÇÕES -->
         <section class="panel side-panel">
           <span class="section-kicker">REDUÇÕES DE PENA</span>
           <h3>Redução aplicada</h3>
 
           <div class="check-group">
+
             <label>
               <input type="checkbox" id="reducaoBomComportamento">
-              Bom comportamento — redução de até 5% da pena
+              Bom comportamento — redução de 5% da pena
             </label>
 
             <label>
               <input type="checkbox" id="reducaoReuPrimario">
-              Réu primário — redução de 20% da pena aplicada
+              Réu primário — redução de 10% da pena
+            </label>
+
+            <label>
+              <input type="checkbox" id="reducaoAdvogadoConstituido">
+              Advogado constituído — redução de 20% da pena
             </label>
 
             <label>
               <input type="checkbox" id="reducaoCumplice">
-              Cúmplice — redução de até 25% da pena
+              Participação como cúmplice — redução de 15% da pena
             </label>
-          </div>
 
-          <div class="inline-field">
-            <label for="cumplicePercent">Percentual do cúmplice</label>
-            <input
-              id="cumplicePercent"
-              type="number"
-              min="0"
-              max="25"
-              step="1"
-              placeholder="Ex: 15"
-            >
           </div>
         </section>
 
+        <!-- 💰 HONORÁRIOS -->
         <section class="panel side-panel">
           <span class="section-kicker">JURÍDICO</span>
           <h3>Honorários</h3>
@@ -110,16 +99,21 @@
           </div>
         </section>
 
+        <!-- 📄 SELECIONADOS -->
         <section class="panel side-panel">
           <span class="section-kicker">SELEÇÃO</span>
           <h3>Artigos selecionados</h3>
-          <div id="selecionadosResumo" class="selection-summary">Nenhum artigo selecionado.</div>
+          <div id="selecionadosResumo" class="selection-summary">
+            Nenhum artigo selecionado.
+          </div>
         </section>
 
+        <!-- ⚙️ AÇÕES -->
         <section class="panel action-panel">
           <button class="btn-primary btn-full" type="button" onclick="calcular()">Calcular Pena</button>
           <button class="btn-secondary btn-full" type="button" onclick="limparCalculo()">Limpar Cálculo</button>
         </section>
+
       </aside>
     </section>
 
