@@ -1,23 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --ink: #0f2740;
-  --ink-soft: #234e78;
-  --muted: #2c7fcb;
-  --muted-light: #56b8ff;
-  --paper: #eef7ff;
-  --paper-soft: #f8fcff;
-  --white-soft: rgba(255, 255, 255, 0.82);
-  --line: rgba(34, 104, 170, 0.14);
-  --line-soft: rgba(34, 104, 170, 0.08);
-  --shadow: rgba(24, 84, 140, 0.14);
-  --shadow-soft: rgba(24, 84, 140, 0.08);
+  --ink: #071c44;
+  --ink-soft: #123f88;
+  --muted: #0f5fc7;
+  --muted-light: #4aa8ff;
+  --paper: #eef6ff;
+  --paper-soft: #f8fbff;
+  --white-soft: rgba(255, 255, 255, 0.88);
+  --line: rgba(16, 89, 190, 0.16);
+  --line-soft: rgba(16, 89, 190, 0.08);
+  --shadow: rgba(7, 28, 68, 0.18);
+  --shadow-soft: rgba(7, 28, 68, 0.10);
   --danger: #9e2f2f;
   --success: #1f6a52;
-  --gold: #4db8ff;
-  --blue-strong: #1592f0;
-  --blue-soft: #dff2ff;
-  --blue-soft-2: #edf8ff;
+  --gold: #7fc8ff;
+  --blue-strong: #1673e6;
+  --blue-soft: #dceeff;
+  --blue-soft-2: #edf6ff;
   --green-strong: #24a148;
 }
 
@@ -37,10 +37,10 @@ body {
   color: var(--ink);
   position: relative;
   background:
-    radial-gradient(circle at top left, rgba(255,255,255,0.65), transparent 28%),
-    radial-gradient(circle at top right, rgba(120, 205, 255, 0.18), transparent 24%),
-    radial-gradient(circle at bottom left, rgba(21, 146, 240, 0.06), transparent 24%),
-    linear-gradient(180deg, #f7fcff 0%, #eef8ff 48%, #e4f3ff 100%);
+    radial-gradient(circle at top left, rgba(255,255,255,0.70), transparent 28%),
+    radial-gradient(circle at top right, rgba(74, 168, 255, 0.18), transparent 24%),
+    radial-gradient(circle at bottom left, rgba(22, 115, 230, 0.08), transparent 24%),
+    linear-gradient(180deg, #f8fbff 0%, #edf5ff 48%, #e3efff 100%);
 }
 
 body::before {
@@ -53,15 +53,15 @@ body::before {
   background-image:
     repeating-linear-gradient(
       0deg,
-      rgba(255,255,255,0.045) 0px,
-      rgba(255,255,255,0.045) 1px,
+      rgba(255,255,255,0.05) 0px,
+      rgba(255,255,255,0.05) 1px,
       transparent 1px,
       transparent 3px
     ),
     repeating-linear-gradient(
       90deg,
-      rgba(19, 125, 214, 0.02) 0px,
-      rgba(19, 125, 214, 0.02) 1px,
+      rgba(15, 95, 199, 0.02) 0px,
+      rgba(15, 95, 199, 0.02) 1px,
       transparent 1px,
       transparent 4px
     );
@@ -73,10 +73,10 @@ body::before {
   inset: 0;
   background: url("logo-snow.png") no-repeat center;
   background-size: 430px;
-  opacity: 0.045;
+  opacity: 0.05;
   pointer-events: none;
   z-index: 0;
-  filter: saturate(1.1);
+  filter: saturate(1.12) contrast(1.05);
 }
 
 .topbar,
@@ -95,7 +95,7 @@ body::before {
 .topbar-line,
 .footer-line {
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  background: linear-gradient(to right, transparent, var(--muted-light), transparent);
 }
 
 .topbar-inner {
@@ -111,7 +111,7 @@ body::before {
   width: 92px;
   height: 92px;
   object-fit: contain;
-  filter: drop-shadow(0 4px 10px rgba(77, 184, 255, 0.16));
+  filter: drop-shadow(0 6px 14px rgba(22, 115, 230, 0.18));
 }
 
 .eyebrow,
@@ -160,7 +160,7 @@ body::before {
 }
 
 .panel {
-  background: rgba(248, 252, 255, 0.92);
+  background: rgba(248, 251, 255, 0.94);
   border: 1px solid var(--line);
   border-radius: 18px;
   box-shadow: 0 12px 28px var(--shadow-soft);
@@ -200,8 +200,8 @@ body::before {
 .search-row input,
 .inline-field input {
   height: 50px;
-  border: 1px solid rgba(44, 127, 203, 0.25);
-  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(15, 95, 199, 0.24);
+  background: rgba(255, 255, 255, 0.92);
   border-radius: 12px;
   padding: 0 16px;
   font-size: 15px;
@@ -212,7 +212,7 @@ body::before {
 .search-row input:focus,
 .inline-field input:focus {
   border-color: var(--blue-strong);
-  box-shadow: 0 0 0 3px rgba(21, 146, 240, 0.12);
+  box-shadow: 0 0 0 3px rgba(22, 115, 230, 0.12);
 }
 
 .search-actions {
@@ -240,23 +240,23 @@ body::before {
 }
 
 .btn-primary {
-  background: linear-gradient(180deg, #29a6ff 0%, #138ae7 100%);
+  background: linear-gradient(180deg, #1c7cf0 0%, #0f5fc7 100%);
   color: #ffffff;
   padding: 14px 18px;
-  box-shadow: 0 8px 18px rgba(19, 138, 231, 0.18);
+  box-shadow: 0 8px 18px rgba(15, 95, 199, 0.20);
 }
 
 .btn-secondary {
-  background: linear-gradient(180deg, #63c4ff 0%, #2ea0ef 100%);
+  background: linear-gradient(180deg, #58adff 0%, #1f82ef 100%);
   color: #ffffff;
   padding: 12px 16px;
-  box-shadow: 0 8px 16px rgba(46, 160, 239, 0.14);
+  box-shadow: 0 8px 16px rgba(31, 130, 239, 0.16);
 }
 
 .btn-ghost {
-  background: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.76);
   color: var(--ink);
-  border: 1px solid rgba(44, 127, 203, 0.18);
+  border: 1px solid rgba(15, 95, 199, 0.16);
   padding: 12px 16px;
 }
 
@@ -278,7 +278,7 @@ body::before {
 }
 
 .article-card {
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.76);
   border: 1px solid var(--line-soft);
   border-radius: 16px;
   padding: 16px 16px 14px;
@@ -288,7 +288,7 @@ body::before {
 .article-card:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 24px var(--shadow-soft);
-  border-color: rgba(44, 127, 203, 0.18);
+  border-color: rgba(15, 95, 199, 0.18);
 }
 
 .article-top {
@@ -310,8 +310,8 @@ body::before {
   white-space: nowrap;
   padding: 6px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(21, 146, 240, 0.14);
-  background: rgba(77, 184, 255, 0.12);
+  border: 1px solid rgba(22, 115, 230, 0.14);
+  background: rgba(74, 168, 255, 0.12);
   color: var(--blue-strong);
   font-size: 10px;
   font-weight: 800;
@@ -338,8 +338,8 @@ body::before {
 
 .article-note {
   margin-bottom: 10px;
-  border-left: 3px solid var(--gold);
-  background: rgba(77, 184, 255, 0.10);
+  border-left: 3px solid var(--muted-light);
+  background: rgba(74, 168, 255, 0.10);
   border-radius: 8px;
   padding: 10px 12px;
   font-size: 12px;
@@ -385,8 +385,8 @@ input[type="checkbox"] {
   margin-top: 14px;
   padding: 12px;
   border-radius: 12px;
-  background: rgba(77, 184, 255, 0.08);
-  border: 1px solid rgba(77, 184, 255, 0.14);
+  background: rgba(74, 168, 255, 0.08);
+  border: 1px solid rgba(74, 168, 255, 0.14);
 }
 
 .note-box strong {
@@ -417,7 +417,7 @@ input[type="checkbox"] {
 
 .judicial-document {
   margin-top: 22px;
-  background: rgba(248, 252, 255, 0.96);
+  background: rgba(248, 252, 255, 0.97);
   border: 1px solid var(--line);
   border-radius: 18px;
   box-shadow: 0 16px 34px var(--shadow-soft);
@@ -429,7 +429,7 @@ input[type="checkbox"] {
   padding: 24px 28px 18px;
   border-bottom: 1px solid var(--line);
   text-align: center;
-  background: linear-gradient(180deg, rgba(237, 248, 255, 0.8), rgba(248, 252, 255, 0.4));
+  background: linear-gradient(180deg, rgba(237, 246, 255, 0.85), rgba(248, 252, 255, 0.48));
 }
 
 .document-header .doc-power {
@@ -494,8 +494,8 @@ input[type="checkbox"] {
 }
 
 .document-card {
-  background: rgba(223, 242, 255, 0.36);
-  border: 1px solid rgba(77, 184, 255, 0.10);
+  background: rgba(220, 238, 255, 0.40);
+  border: 1px solid rgba(74, 168, 255, 0.10);
   border-radius: 14px;
   padding: 16px;
 }
@@ -507,8 +507,8 @@ input[type="checkbox"] {
 }
 
 .document-list {
-  background: rgba(77, 184, 255, 0.06);
-  border: 1px solid rgba(77, 184, 255, 0.12);
+  background: rgba(74, 168, 255, 0.06);
+  border: 1px solid rgba(74, 168, 255, 0.12);
   border-radius: 14px;
   padding: 16px;
 }
@@ -576,8 +576,8 @@ input[type="checkbox"] {
 }
 
 .status-fianca {
-  background: linear-gradient(180deg, rgba(223, 242, 255, 0.72), rgba(248, 252, 255, 0.96));
-  border-color: rgba(21, 146, 240, 0.16);
+  background: linear-gradient(180deg, rgba(220, 238, 255, 0.76), rgba(248, 252, 255, 0.96));
+  border-color: rgba(22, 115, 230, 0.16);
   color: var(--ink);
 }
 
@@ -598,7 +598,7 @@ input[type="checkbox"] {
 }
 
 .result-card-box {
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.84);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 18px 16px;
@@ -624,12 +624,12 @@ input[type="checkbox"] {
 }
 
 .result-card-final {
-  background: linear-gradient(180deg, rgba(21, 146, 240, 0.10), rgba(77, 184, 255, 0.10));
-  border-color: rgba(21, 146, 240, 0.18);
+  background: linear-gradient(180deg, rgba(15, 95, 199, 0.10), rgba(74, 168, 255, 0.10));
+  border-color: rgba(15, 95, 199, 0.18);
 }
 
 .result-values-panel {
-  background: rgba(255, 255, 255, 0.84);
+  background: rgba(255, 255, 255, 0.86);
   border: 1px solid var(--line);
   border-radius: 16px;
   box-shadow: 0 10px 22px var(--shadow-soft);
@@ -672,7 +672,7 @@ input[type="checkbox"] {
 }
 
 .result-value-row-total {
-  background: rgba(77, 184, 255, 0.08);
+  background: rgba(74, 168, 255, 0.08);
 }
 
 .result-value-row-total strong {
